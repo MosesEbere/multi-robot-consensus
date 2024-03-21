@@ -1,0 +1,9 @@
+<launch>
+    <arg name="node_start_delay" default="4.0" />  
+    <node name="formation_ctl" pkg="multi-robot-consensus" type="formation_ctl_hardstop_stubborn.py" output="screen" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' ">
+        <rosparam file="$(find multi-robot-consensus)/params.yaml"/>
+    </node>
+
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find multi-robot-consensus)/rviz/vis.rviz"/>
+
+</launch>

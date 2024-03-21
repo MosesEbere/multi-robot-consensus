@@ -1,0 +1,70 @@
+task: 'formation_consensus'
+
+stubborn_nodes:
+  k: 1 # Number of stubborn agents. This also works for rendezvous tasks. Try it out!
+  pos: &pos [3,-2.5] # List of stubborn agent positions. 
+  connection: [-1] # Who should each stubborn agent connect to? -- Works in ALL cases. Default = -1 == connect to all normal agents. 
+  motion_type: 'circular'
+  pos_list: [[-3, 2], [3, 2], [-3, -2], [3, -2]]
+  use_multigoal: False
+
+final_formation:
+  shape: 'circle_formation'
+  center: *pos
+  start: [0.5, 0.5]
+  spacing: &spacing 1.0  # Should be within the communication range. 
+  radius: &radius 1.0 # Should be within the communication range. 
+  visualize: False
+
+init_formation: 
+  init_formation: random #create_circle_center
+  n: 6 # Number of agents to be created (using random and circle)
+  r: 4
+  origin: [0,0]
+  bounds: [10,10]
+
+goal: [300,200]
+
+comm_range: 10.0
+comm_theta: 360.0 # Must be in degrees.
+switching_topology: True
+scale_vel: 0.1
+
+weights:
+  separation: &separation 0.5
+  formation: &formation 1.0
+  steer_to_avoid: &steer_to_avoid 0.5
+
+separation:
+  repulsion_strength: 1.0
+  threshold: 0.8 # A percentage of the formation radius/spacing.
+
+# Prioritized Acceleration
+use_prioritized_acc: False
+priority_list: 
+  - '_formation': *formation
+  - '_separation': *separation
+  - '_steer_to_avoid': *steer_to_avoid
+
+
+
+
+inter_connectivity: 'full'
+# obstacle params
+obs_r:  0.8 # for both see-to-avoid and pot field
+step_angle : 0.174533 # 51 # 0.174533 #10 in radian 
+max_steering_angle : 6.28 #10 in radian
+
+# Kinematic params
+max_speed: 3.3
+max_acc: 2.2
+
+
+# visualization params
+visualize: True
+visualize_traj: True
+truncate_trajectories: 100  # None if displaying full trajectories
+
+# goal params
+goal_radius: 0.1
+goal_tolerance: 1.0
