@@ -441,6 +441,10 @@ Contributions to this repository are welcome. Some of the ways to contribute to 
 
 This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details.
 
+## Acknowledgments
+
+- The [LARICS team](https://github.com/larics) at the University of Zagreb for the Sphero simulation package.
+
 ## Authors:
 
 - [Moses Ebere](https://github.com/MosesEbere)
