@@ -1,0 +1,16 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/moses/unizg_ws/devel/lib/python3/dist-packages",
+        "/home/moses/turtlebot_ws/devel/lib/python3/dist-packages",
+        "/home/moses/catkin_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages",
+        "/home/moses/aerial_ws/src/urs_aerial/urs_solution/Task1"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/moses/unizg_ws/devel/lib/python3/dist-packages",
+        "/home/moses/turtlebot_ws/devel/lib/python3/dist-packages",
+        "/home/moses/catkin_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages",
+        "/home/moses/aerial_ws/src/urs_aerial/urs_solution/Task1"
+    ]
+}

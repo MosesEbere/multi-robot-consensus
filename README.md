@@ -33,16 +33,29 @@ __Note__: The blue circles are current agent positions while the purple circles 
 
 ## Installation
 
-1. **Dependencies**: Ensure ROS (Robot Operating System) and Python 3 are installed on your system.
+1. **Dependencies**: Ensure ROS (Robot Operating System) and Python 3 are installed on your system. Additionally, this project uses the 2D [Stage](https://github.com/rtv/Stage) simulator, so the bindings for ROS ([stage_ros](http://wiki.ros.org/stage_ros)) should be installed, alongside the map server. Run the following commands:
+   ```bash
+   sudo apt install -y \
+      ros-${ROS_DISTRO}-map-server \
+      ros-${ROS_DISTRO}-stage-ros
+   ```
+    Replace `${ROS_DISTRO}` with your ROS distribution (e.g., `noetic`, `melodic`, etc.).
+
+  * Additionally, install the following packages for the simulating the sphero robots in the stage simulator:
+    ```bash
+    cd <your_workspace>/src
+    git clone https://github.com/larics/sphero_simulation.git
+    catkin build
+    ```
 2. **Clone the Repository**: Clone this repository into your ROS workspace's `src` directory.
    ```bash
-   cd ~/catkin_ws/src
+   cd <your_workspace>/src
    git clone git@github.com:MosesEbere/multi-robot-consensus.git
    ```
-3. **Build the Package**: From the root of your ROS workspace, build the package using `catkin_make`.
+3. **Build the Package**: From the root of your ROS workspace, build the package using `catkin build`.
    ```bash
-   cd ~/catkin_ws
-   catkin_make
+   cd <your_workspace>
+   catkin build
    ```
 4. **Source the Workspace**: Source your ROS workspace to make the package available.
    ```bash
@@ -221,9 +234,9 @@ These sections provide powerful tools for controlling the nuanced interactions b
 
 To run a simulation, use the provided launch files. For instance, to start a simulation with the default configuration:
 
-1. Go to the `stage_simulator` launch yaml file and change the number of robots to the desired value.
+1. Go to the `stage_simulator` launch yaml file (i.e., in `<your_workspace>/src/sphero_simulation/sphero_stage/launch`) and change the number of robots to the desired value.
 
-2. Go to the `params.yaml` file and change the number of boids (i.e., k + n) to the same value as the above.
+2. Go to the `params.yaml` file (i.e., in `<your_workspace>/src/multi-robot-consensus`) and change the number of boids (i.e., k + n) to the same value as the above.
 
 3. Spawn the robots in the Stage Simulator:
     ```bash
@@ -426,7 +439,11 @@ Contributions to this repository are welcome. Some of the ways to contribute to 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- The [LARICS team](https://github.com/larics) at the University of Zagreb for the Sphero simulation package.
 
 ## Authors:
 
